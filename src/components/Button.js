@@ -14,6 +14,12 @@ const Button = ({ value }) => {
         '%': () => prevResult % result,
     }
 
+    const computeEqual = () => {
+        const newResult = computeOperation[operation]
+        setResult(newResult)
+        setPrevResult(0)   
+    }
+
     const clickHandler = () => {
         switch (value) {
             case 'Del':
@@ -23,9 +29,7 @@ const Button = ({ value }) => {
                 setResult(0)
                 break
             case '=':
-                const newResult = computeOperation[operation]
-                setResult(newResult)
-                setPrevResult(0)
+                computeEqual()
                 break
             default:
                 setPrevResult(result)

@@ -6,13 +6,12 @@ import '../assets/calculator.css'
 
 function Calculator() {
   return (
-    <CalculatorContext>
-      <div className="calculator">
+    <div className="calculator">
+      <CalculatorContext>
         <CalculatorScreen />
         <CalculatorButtons />
-      </div>
-      Made by Cosmin & Stroiu
-    </CalculatorContext>
+      </CalculatorContext>
+    </div>
   )
 }
 

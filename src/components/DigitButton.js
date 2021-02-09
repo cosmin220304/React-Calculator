@@ -5,7 +5,11 @@ const DigitButton = ({value}) => {
     const [result, setResult ] = useContext(ResultContext)
 
     const clickHandler = () => {
-        setResult(result * 10 + value)
+        if (Number.isInteger(result)) {
+            setResult(result * 10 + value)
+        } else {
+            setResult(value)
+        }
     }
 
     return (
