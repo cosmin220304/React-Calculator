@@ -3,6 +3,8 @@
 ## Try it out:  
 https://cosmin-afta-calculator.herokuapp.com/ 
 
+## Project structure:
+
 <pre>
 .  
 ├── README.md  
