@@ -8,7 +8,7 @@ const CalculatorScreen = () => {
     return (
         <div className="calculator__screen">
             <div className="calculator__screen--content">
-                {result}
+                {isNaN(result)? 'Error' : result}
             </div>
             <div className="calculator__screen__buttons">
                 <Button value="Clear" isOperator />

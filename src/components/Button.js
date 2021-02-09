@@ -6,18 +6,42 @@ const Button = ({ value }) => {
     const [prevResult, setPrevResult] = useContext(PrevResultContext)
     const [operation, setOperation] = useContext(OperationContext)
 
-    const computeOperation = {
-        '+': () => prevResult + result,
-        '-': () => prevResult - result,
-        '/': () => prevResult / result,
-        '*': () => prevResult * result,
-        '%': () => prevResult % result,
+    const operationToResult = {
+        '+': prevResult + result,
+        '-': prevResult - result,
+        '/': prevResult / result,
+        '*': prevResult * result,
+        '(mod)': prevResult % result,
+        '': result,
     }
 
     const computeEqual = () => {
-        const newResult = computeOperation[operation]
+        const newResult = operationToResult[operation]
+
+        if (isNaN(newResult)) {
+            setPrevResult(0)
+            setOperation('')
+            setResult('Error')
+            return
+        }
+
         setResult(newResult)
         setPrevResult(0)   
+    }
+
+    const computeOperation = () => {
+        const newPrevResult = operationToResult[operation]
+        
+        if (isNaN(newPrevResult)) {
+            setPrevResult(0)
+            setOperation('')
+            setResult('Error')
+            return
+        }
+
+        setPrevResult(newPrevResult)
+        setResult(0)
+        setOperation(value)
     }
 
     const clickHandler = () => {
@@ -27,14 +51,13 @@ const Button = ({ value }) => {
                 break
             case 'Clear':
                 setResult(0)
+                setPrevResult(0)
                 break
             case '=':
                 computeEqual()
                 break
             default:
-                setPrevResult(result)
-                setResult(0)
-                setOperation(value)
+                computeOperation()
         }
     }
 
