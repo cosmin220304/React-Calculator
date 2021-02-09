@@ -15,10 +15,7 @@ https://cosmin-afta-calculator.herokuapp.com/
     ├── assets/       
     ├── utils/  
     ├── tests/  
-    └── components/  
-        └── common/  
-        └── example_component/ 
-            └─── ExampleComponent.js 
+    └── components/   
 </pre>  
 * src/ - Contains all of our react codebase
 * index.js - Base react component   
